@@ -1,16 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Travel Tracker</title>
 </head>
+
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <aside class="sidebar">
+    <img class="travel-tracker-logo" src="./images/travel-tracker-logo.webp" alt="Travel Tracker logo">
+    <div class="sidebar-buttons">
+      <button class="sidebar-btn">Home</button>
+      <button class="sidebar-btn">Request a Trip</button>
+      <button class="sidebar-btn">Contact Travel Agency</button>
+    </div>
+  </aside>
+
+  <div class="content">
+    <header class="user-info" id="userInfo">
+      <p>Total Spending: </p>
+      <p>Your Location</p>
+      <p id="username">Hannah Celemen</p>
+      <!-- <img/> for notifications -->
+      <!-- <img/>  for profile -->
+    </header>
+
+    <nav class="nav">
+      <p class="nav-title">Upcoming Trips</p>
+      <div class="nav-buttons">
+        <button class="nav-btn">Back</button>
+        <button class="nav-btn">Next</button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="home">
+        <p class="end" id="countdown">countdown</p>
+        <div class="trip">
+          <div id="imageContainer" class="">
+            <img class="trip-image"
+              src="https://travellersworldwide.com/wp-content/uploads/2022/06/shutterstock_704449474.png.webp"
+              alt="Train passing the Swiss Alps" />
+          </div>
+          <div class="trip-details">
+            <p class="trip-name" id="tripName">Trip Name</p>
+            <p id="destination">Destination</p>
+            <p id="duration">Duration</p>
+            <p id="numberOfPeople">Number of People</p>
+            <p id="tripCost" class="end">Total Cost</p>
+          </div>
+        </div>
+      </section>
+      <!-- Request Form will be hidden  -->
+      <div class="form-container">
+        <h2 class="form-title">Request Form</h2>
+        <form class="request-form" id="requestForm">
+          <div class="user-input">
+            <label for="formTripName">Trip Name: </label>
+            <input type="text" id="formTripName" placeholder="Enter trip name" name="trip name" required>
+          </div>
+
+          <div class="user-input">
+            <label for="formDestination">Destination:</label>
+            <select name="destinations" id="formDestination">
+              <option value="Lima, Peru">Lima, Peru</option>
+              <option value="Stockholm, Sweden">Stockholm, Sweden</option>
+              <!-- placeholders, should iterate thru the 50 destinations for this drop down to show -->
+            </select>
+          </div>
+
+          <div class="user-input">
+            <label for="formDuration">Duration:</label>
+            <input type="number" id="formDuration" placeholder="Enter number" name="trip duration" required>
+          </div>
+
+          <div class="user-input">
+            <label for="formNumOfPeople">Number of People:</label>
+            <select name="number of people" id="formNumOfPeople">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <!-- limit trip for up to 6? -->
+            </select>
+          </div>
+
+          <div>
+            <p class="end" id="formEstimatedCost">Estimated Cost</p>
+          </div>
+          <div class="end form-buttons">
+            <button type="submit" id="submitTripRequest" class="form-btn">Submit</button>
+            <button type="button" id="cancelTripRequest" class="form-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <div class="trip-categories">
+      <section class="trip-type past" id="pastTrips">
+        <h3>Past Trips</h3>
+      </section>
+
+      <section class="trip-type upcoming" id="upcomingTrips">
+        <h3>Upcoming Trips</h3>
+      </section>
+
+      <section class="trip-type pending" id="pendingTrips">
+        <h3>Pending Trips</h3>
+      </section>
+    </div>
+  </div>
+
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
 </body>
+
 </html>

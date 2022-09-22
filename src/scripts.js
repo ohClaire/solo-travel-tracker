@@ -1,11 +1,36 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+// Import styles
 import './css/styles.css';
+import './images/travel-tracker-logo.webp'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// Import local files
+import { fetchAll } from './apiCalls.js';
+import Traveler from './travelers/Traveler';
+import TravelerRepo from './travelers/TravelersRepo';
+import Destination from './destinations/Destination';
+import DestinationsRepo from './destinations/DestinationsRepo';
+import Trip from './trips/Trip';
+import TripsRepo from './trips/TripsRepo';
 
+// Import third party libraries
+import dayjs from 'dayjs';
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// Global variables
+let travelersData, destinationsData, tripsData;
+let currentsUser;
+let travelerRepo
+
+// Query Selectors
+window.addEventListener('load', loadUserData);
+
+// Functions
+function loadUserData() {
+  fetchAll()
+  .then(data => {
+    const [travelersData, destinationsData, tripsData] = data;
+    travelerRepo = new TravelerRepo(travelersData, tripsData);
+  })
+}
+
+function getCurrentDate() {
+  return dayjs();
+}
