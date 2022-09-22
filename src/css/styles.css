@@ -1,3 +1,190 @@
+html {
+  min-height: 100vh;
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+  display: flex;
+  margin: 0px;
+  min-height: 100vh;
+}
+
+p {
+  margin: 0px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px;
+  flex: 0 1 200px;
+}
+
+.travel-tracker-logo {
+  height: 108px;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  width: 200px;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-btn {
+  font-size: 1.5rem;
+  border: 0px;
+  padding: 4px;
+  width: 100%;
+}
+
+.sidebar-btn:hover {
+  background-color: rgb(254, 192, 115);
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  /* flex: 1 1 0px; */
+}
+
+.content{
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(198, 223, 245);
+  flex: 1 1 0px;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.nav-title {
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 20px;
+  flex: 1 1 0px;
+}
+
+.nav-buttons {
+  gap: 10px;
+  display: flex;
+}
+
+.nav-btn {
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.end {
+  display:flex;
+  justify-content: flex-end;
+  margin: 0px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.trip {
+  display: flex;
+  flex: 1 1 0px;
+}
+
+.trip-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  flex: 1 1 0px;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0px;
+  padding-left: 30px;
+  font-size: 1.2rem;
+}
+
+.form-container {
+  background-color: rgb(254, 192, 115);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0px;
+}
+
+.form-title {
+  padding-left: 20px;
+  font-size: 1.8rem;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0px;
+  padding-left: 20px;
+  gap: 14px;
+  font-size: 1.2rem;
+}
+
+.trip-categories {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex: 1 1 0px;
+  gap: 20px;
+}
+
+.trip-type {
+  flex: 1 1 0px;
+  font-size: 1.25rem;
+  border-radius: 14px;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+
+/* Add breakpoints so when the screen is less than 550px in width, everything goes into a column*/
+
+@media screen and (max-width: 650px) {
+  body {
+    flex-direction: column;
+    font-size: 1.2rem;
+  }
+  .travel-tracker-logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .trip {
+    flex-direction: column;
+  }
+  .trip-details {
+    padding-left: 0px;
+  }
+  .trip-categories {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .user-info {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

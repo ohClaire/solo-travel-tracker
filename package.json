@@ -26,7 +26,10 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
-    "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "test": "mochapack 'src/**/tests/**/*.js'",
+    "lint": "./node_modules/.bin/eslint 'src/**/*.js'"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.5"
   }
 }
