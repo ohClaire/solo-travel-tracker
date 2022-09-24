@@ -13,6 +13,16 @@ class Destination {
       return this.id;
     }
   }
+
+  getTotalCostOfLodging(duration) {
+    // console.log(this.estimatedLodgingCostPerDay, duration)
+    return this.estimatedLodgingCostPerDay * duration;
+  }
+
+  getTotalCostOfFlights(numOfTravelers) {
+    // console.log(this.estimatedFlightCostPerPerson, numOfTravelers);
+    return this.estimatedFlightCostPerPerson * numOfTravelers;
+  }
 };
 
 export default Destination;
