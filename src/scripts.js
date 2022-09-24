@@ -19,7 +19,6 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 import MicroModal from 'micromodal';  
 
-
 // Global variables
 const now = dayjs();
 let allTravelers;
@@ -28,10 +27,6 @@ let allTrips;
 let randomUser;
 let tripsByUserId;
 
-// modal
-// const openModalButton = document.querySelector('[data-modal-target]');
-// const closeModalButton = document.querySelector('[data-close-button]');
-// const overlay = document.querySelector('#overlay');
 
 // Query Selectors
 const username = document.querySelector('#username');
@@ -40,28 +35,13 @@ const userSpending = document.querySelector('#userSpending');
 const pastTrips = document.querySelector('#pastTrips');
 const upcomingTrips = document.querySelector('#upcomingTrips');
 const pendingTrips = document.querySelector('#pendingTrips');
+const openFormButton = document.querySelector('#openFormButton')
 const formDestinations = document.querySelector('#formDestinations');
 
 // Event Listeners
 window.addEventListener('load', getData);
-// overlay.addEventListener('click', () => {
-//   closeModalButton();
-// })
-// openModalButton.addEventListener('click', () => {
-//   //openModal()
-//   if (modal === null) {
-//     modal.classList.add('active')
-//     overlay.classList.add('active')
-//   }
-// })
 
-// closeModalButton.addEventListener('click', () => {
-//   //closeModal()
-//   if (modal == null) {
-//     modal.classList.remove('active')
-//     overlay.classList.remove('active')
-//   }
-// })
+
 // Functions
 function getData() {
   fetchAll()
@@ -79,11 +59,12 @@ function getData() {
 };
 
 function renderApplication(user) {
+  MicroModal.init();
   console.log('randomUser', user)
 
   renderUsername(user);
   renderTripsByUserId(user.id);
-  // renderDestinationChoices();
+  renderDestinationChoices();
   renderTotalSpending();
 
 }
@@ -120,7 +101,7 @@ function renderTripsByUserId(userID) {
 
 function renderDestinationChoices() {
   allDestinations.destinationsData.forEach(destination => {
-    // formDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
+    formDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
   })
 }
 
