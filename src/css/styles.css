@@ -146,14 +146,14 @@ p {
   padding-left: 30px;
 }
 
-.form-container {
+/* .form-container {
   background-color: rgb(254, 192, 115);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
   padding: 20px;
-}
+} */
 
 .form-title {
   padding-left: 20px;
@@ -164,7 +164,6 @@ p {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
-  padding-left: 20px;
   gap: 14px;
   font-size: 1.2rem;
 }
