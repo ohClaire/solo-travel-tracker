@@ -49,8 +49,29 @@ p {
 .user-info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
-  /* flex: 1 1 0px; */
+}
+
+.user-spending {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.profile {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  gap: 12px;
+}
+
+.profile-image {
+  height: 30px;
+  width: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
 }
 
 .content{
@@ -90,8 +111,6 @@ p {
   justify-content: flex-end;
   margin: 0px;
   padding: 10px;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .home {
@@ -105,22 +124,26 @@ p {
 
 .trip {
   display: flex;
+  flex: 0 1 0px;
+}
+
+.image-container {
+  padding-left: 10px;
   flex: 1 1 0px;
 }
 
 .trip-image {
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-  flex: 1 1 0px;
+  width: 100%;
+  border-radius: 16px;
 }
 
 .trip-details {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
-  padding-left: 30px;
   font-size: 1.2rem;
+  gap: 10px;
+  padding-left: 30px;
 }
 
 .form-container {
@@ -129,6 +152,7 @@ p {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
+  padding: 20px;
 }
 
 .form-title {
@@ -145,6 +169,10 @@ p {
   font-size: 1.2rem;
 }
 
+.form-buttons {
+  gap: 20px;
+}
+
 .trip-categories {
   display: flex;
   justify-content: space-between;
@@ -154,6 +182,8 @@ p {
 }
 
 .trip-type {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 0px;
   font-size: 1.25rem;
   border-radius: 14px;
@@ -161,10 +191,26 @@ p {
   padding: 10px;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+        
 
 /* Add breakpoints so when the screen is less than 550px in width, everything goes into a column*/
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 740px) {
   body {
     flex-direction: column;
     font-size: 1.2rem;
@@ -177,7 +223,7 @@ p {
     flex-direction: column;
   }
   .trip-details {
-    padding-left: 0px;
+    padding: 10px 20px;
   }
   .trip-categories {
     flex-direction: column;
@@ -186,5 +232,16 @@ p {
   .user-info {
     flex-direction: column;
     gap: 10px;
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 300px;
+    overflow: hidden;
+  }
+  .trip-image {
+    padding: 20px;
+    border-radius: 20px;
   }
 }

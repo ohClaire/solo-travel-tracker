@@ -6,17 +6,18 @@ class Trip {
     this.userID = tripDetails.userID;
     this.destinationID = tripDetails.destinationID;
     this.travelers = tripDetails.travelers;
-    this.date = this.convertedDateFormat(tripDetails.date);
+    this.date = this.convertDateFormat(tripDetails.date);
     this.duration = tripDetails.duration;
     this.status = tripDetails.status || "pending";
     this.suggestedActivities = tripDetails.suggestedActivities;
   }
 
-  convertedDateFormat(date) {
-    return date.split('/').join('-');
+  convertDateFormat(date) {
+    const slicedDate = date.slice(0, 10);
+    return slicedDate.split('/').join('-');
   }
 
-  validateDateFormat() {
+  validateDateFormat(date) {
     const isDateValid = dayjs(this.date, 'YYYY-MM-DD').isValid();
 
     if (!isDateValid) {
@@ -24,6 +25,21 @@ class Trip {
     } else {
       return isDateValid;
     }
+  }
+
+  isPastTrip(now) {
+    // console.log(dayjs(this.date).isBefore(now), 'is a past trip')
+    return dayjs(this.date).isBefore(now);
+  }
+
+  isUpcomingTrip(now) {
+    // console.log(dayjs(this.date).isAfter(now), 'is an upcoming trip')
+    return dayjs(this.date).isAfter(now);
+  }
+  
+  isPendingTrip() {
+    // console.log(this.status === 'pending', 'is pending')
+    return this.status === 'pending' 
   }
 }
 
