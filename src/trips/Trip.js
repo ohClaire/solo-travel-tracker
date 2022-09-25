@@ -1,45 +1,41 @@
 import dayjs from 'dayjs'; 
+const isBetween = require('dayjs/plugin/isBetween');
+dayjs.extend(isBetween);
 
 class Trip {
   constructor(tripDetails) {
     this.id = tripDetails.id;
     this.userID = tripDetails.userID;
     this.destinationID = tripDetails.destinationID;
-    this.travelers = tripDetails.travelers;
-    this.date = this.convertDateFormat(tripDetails.date);
+    this.numOfTravelers = tripDetails.travelers;
+    this.date = this.getDate(tripDetails.date);
     this.duration = tripDetails.duration;
     this.status = tripDetails.status || "pending";
     this.suggestedActivities = tripDetails.suggestedActivities;
   }
 
-  convertDateFormat(date) {
-    const slicedDate = date.slice(0, 10);
-    return slicedDate.split('/').join('-');
+  getDate(date) {
+    return date.slice(0, 10);
   }
 
-  validateDateFormat(date) {
-    const isDateValid = dayjs(this.date, 'YYYY-MM-DD').isValid();
-
-    if (!isDateValid) {
-      return "Use the 'YYYY-MM-DD' format for your date.";
-    } else {
-      return isDateValid;
-    }
+  isPastTrip() {
+    return dayjs(this.date).isBefore(dayjs());
   }
 
-  isPastTrip(now) {
-    // console.log(dayjs(this.date).isBefore(now), 'is a past trip')
-    return dayjs(this.date).isBefore(now);
-  }
-
-  isUpcomingTrip(now) {
-    // console.log(dayjs(this.date).isAfter(now), 'is an upcoming trip')
-    return dayjs(this.date).isAfter(now);
+  isUpcomingTrip() {
+    return dayjs(this.date).isAfter(dayjs());
   }
   
   isPendingTrip() {
-    // console.log(this.status === 'pending', 'is pending')
-    return this.status === 'pending' 
+    return this.status === 'pending'; 
+  }
+
+  isBetweenAYear() {
+    const dateNow = dayjs();
+    const yearNow = dayjs().year();
+    const dateAYearAgo = dayjs().set('year', yearNow - 1);
+    
+    return dayjs(this.date).isBetween(dateAYearAgo, dateNow);
   }
 }
 
