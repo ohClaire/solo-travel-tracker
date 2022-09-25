@@ -1,4 +1,4 @@
-const fetchData = (fileName) => {
+export const fetchData = (fileName) => {
   return fetch(`http://localhost:3001/api/v1/${fileName}`)
     .then((response) => response.json())
     .catch((error) =>
@@ -20,3 +20,6 @@ export const fetchAll = () => {
   ]);
 };
 
+export const postData = () => {
+
+}

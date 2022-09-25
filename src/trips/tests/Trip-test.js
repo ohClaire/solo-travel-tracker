@@ -31,17 +31,13 @@ describe('Trip', () => {
   });
 
   it('should have number of travelers', () => {
-    expect(trip1.travelers).to.equal(1);
-    expect(trip2.travelers).to.equal(1);
+    expect(trip1.numOfTravelers).to.equal(1);
+    expect(trip2.numOfTravelers).to.equal(1);
   });
 
   it('should have a date', () => {
-    expect(trip1.date).to.equal('2022-09-16');
-    expect(trip2.date).to.equal('2020-05-26');
-  });
-
-  it('should check the format of date is valid', () => {
-    expect(trip1.validateDateFormat()).to.equal(true);
+    expect(trip1.date).to.equal('2022/09/16');
+    expect(trip2.date).to.equal('2020/05/26');
   });
 
   it('date should be a string', () => {

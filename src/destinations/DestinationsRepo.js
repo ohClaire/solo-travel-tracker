@@ -1,6 +1,7 @@
 class DestinationsRepo {
   constructor(destinationsData) {
     this.destinationsData = destinationsData;
+    // console.log(this.destinationsData)
   }
 
   getDestinationById(destinationId) {
