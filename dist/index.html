@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
   <title>Travel Tracker</title>
 </head>
 
@@ -14,14 +17,14 @@
   <aside class="sidebar">
     <img class="travel-tracker-logo" src="./images/travel-tracker-logo.webp" alt="Travel Tracker logo">
     <div class="sidebar-buttons">
-      <button class="sidebar-btn">Home</button>
-      <button class="sidebar-btn" data-micromodal-trigger="modalForm">Request a Trip</button>
-      <button class="sidebar-btn">Contact Travel Agency</button>
+      <!-- <button class="sidebar__btn">Home</button> -->
+      <button class="sidebar__btn" data-micromodal-trigger="modalForm">Request a Trip</button>
+      <!-- <button class="sidebar__btn">Contact Travel Agency</button> -->
     </div>
   </aside>
 
   <div class="modal" id="modalForm" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__overlay">
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modalFormTitle">
         <header class="modal__header">
           <h2 class="modal__title" id="modalFormTitle">
@@ -34,7 +37,7 @@
             <form class="request-form" id="requestForm">
               <div class="user-input">
                 <label for="formTripDate">Date: </label>
-                <input type="date" class="trip-start" id="formTripDate" name="Trip Start" required>
+                <input type="date" min="" class="trip-start" id="formTripDate" name="Trip Start" required>
               </div>
 
               <div class="user-input">
@@ -55,19 +58,20 @@
               </div>
 
               <div class="end form-buttons">
-
-                <button class="modal__btn modal__btn-primary" type="submit" id="submitTripRequest">Book Trip</button>
-                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+                <button class="modal__btn modal__btn-primary" type="submit" id="bookTripBtn" disabled>Book
+                  Trip</button>
+                <button class="modal__btn" id="cancelBookingBtn" data-micromodal-close
+                  aria-label="Close this dialog window">Cancel</button>
               </div>
             </form>
           </main>
         </div>
-        <button class="cost-estimate-btn" id="getEstimatedCost">Get Cost Estimate?</button>
+        <button class="cost-estimate__btn" id="getEstimatedCost" disabled>Get Cost Estimate?</button>
         <article id="formEstimatedCost">
 
         </article>
         <footer class="modal__footer">
-          <p id="postErrorMessage" class="hidden">Error will show here</p>
+          <p id="postErrorMessage" class="hidden"></p>
         </footer>
       </div>
     </div>
@@ -88,8 +92,8 @@
     <nav class="nav">
       <h1 class="nav-title">Destinations</h1>
       <div class="nav-buttons">
-        <!-- <button class="nav-btn">Back</button>
-        <button class="nav-btn">Next</button> -->
+        <!-- <button class="nav__btn">Back</button>
+        <button class="nav__btn">Next</button> -->
       </div>
     </nav>
 
@@ -115,15 +119,15 @@
 
     <div class="trip-categories">
       <section class="trip-column past" id="pastTrips">
-        <h3>Past Trips</h3>
+        <h3 class="trip-title">Past Trips</h3>
       </section>
 
       <section class="trip-column upcoming" id="upcomingTrips">
-        <h3>Upcoming Trips</h3>
+        <h3 class="trip-title">Upcoming Trips</h3>
       </section>
 
       <section class="trip-column pending" id="pendingTrips">
-        <h3>Pending Trips</h3>
+        <h3 class="trip-title">Pending Trips</h3>
       </section>
     </div>
   </div>
