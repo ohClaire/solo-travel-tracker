@@ -49,8 +49,4 @@ describe('Destination', () => {
     expect(destination1.getDestinationIdByName('Lima, Peru')).to.equal(1);
     expect(destination2.getDestinationIdByName('Stockholm, Sweden')).to.equal(2);
   });
-
-  it('should not return a destination ID if there is no destination by this name', () => {
-    expect(destination1.getDestinationIdByName('Hong Kong, China')).to.equal(undefined);
-  });
 });
