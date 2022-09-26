@@ -10,6 +10,11 @@ class Traveler {
     this.listOfTrips = this.sortTripsByDate(tripsData);
   }
 
+  getFirstName() {
+    const splitName = this.name.split(' ');
+    return splitName[0]
+  }
+
   getYearlySpendingOnTrips(data) {
     const userSpending = this.listOfTrips.reduce((sum, userTrip) => {
       const trip = new Trip(userTrip);
@@ -17,7 +22,7 @@ class Traveler {
       const totalLodgingCost = tripDestination.getTotalCostOfLodging(trip.duration);
       const totalFlightCost = tripDestination.getTotalCostOfFlights(trip.numOfTravelers);
       const totalSpending = totalLodgingCost + totalFlightCost;
-      console.log(trip.isBetweenAYear())
+      console.log(trip.isBetweenAYear(), 'calculate spending for this trip')
       if (trip.status === 'approved' && trip.isBetweenAYear()) {
         sum += totalSpending;
       }
@@ -39,6 +44,19 @@ class Traveler {
       });
 
     return sortedTrips;
+  }
+
+  getEstimatedCostForTrip(listOfDestinations, userInputs) {
+    const destination = new Destination(listOfDestinations.find(d => d.id === userInputs.destinationID))
+    console.log(destination)
+    const estimatedLogdingCost = destination.getTotalCostOfLodging(userInputs.duration);
+    const estimatedFlightCost = destination.getTotalCostOfFlights(userInputs.travelers);
+    const tripEstimate = estimatedLogdingCost + estimatedFlightCost;
+    const agentFee = tripEstimate * .10;
+    const totalEstimate = tripEstimate + agentFee;
+    console.log(totalEstimate)
+
+    return totalEstimate.toLocaleString("en-US");
   }
 };
 
