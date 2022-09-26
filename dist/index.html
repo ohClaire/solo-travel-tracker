@@ -25,7 +25,7 @@
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modalFormTitle">
         <header class="modal__header">
           <h2 class="modal__title" id="modalFormTitle">
-            Request Your Next Trip
+
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
@@ -34,13 +34,13 @@
             <form class="request-form" id="requestForm">
               <div class="user-input">
                 <label for="formTripDate">Date: </label>
-                <input type="date" class="trip-start" id="formTripDate" name="Trip Start">
+                <input type="date" class="trip-start" id="formTripDate" name="Trip Start" required>
               </div>
 
               <div class="user-input">
-                <label for="formDestination">Destination:</label>
-                <select name="destinations" id="formDestinations">
-                  <option value="" disabled selected>Select a destination</option>
+                <label for="formDestinations">Destination:</label>
+                <select name="destinations" id="formDestinations" required>
+                  <option value="" disabled>Select a destination</option>
                 </select>
               </div>
 
@@ -50,24 +50,24 @@
               </div>
 
               <div class="user-input">
-                <label for="formNumOfPeople">Number of People:</label>
-                <input type="number" name="number of people" min="1" max="16" id="formNumOfPeople">
+                <label for="formNumOfTravelers">Number of Travelers:</label>
+                <input type="number" name="number of travelers" min="1" max="16" id="formNumOfTravelers" required>
               </div>
 
-              <div>
-                <h3 class="end" id="formEstimatedCost">Estimated Cost</h3>
+              <div class="end form-buttons">
+
+                <button class="modal__btn modal__btn-primary" type="submit" id="submitTripRequest">Book Trip</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
               </div>
-              <!-- <div class="end form-buttons">
-                <button type="submit" id="submitTripRequest" class="form-btn">Submit</button>
-                <button type="button" id="cancelTripRequest" class="form-btn">Cancel</button>
-              </div> -->
             </form>
           </main>
-
         </div>
+        <button class="cost-estimate-btn" id="getEstimatedCost">Get Cost Estimate?</button>
+        <article id="formEstimatedCost">
+
+        </article>
         <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Continue</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+          <p id="postErrorMessage" class="hidden">Error will show here</p>
         </footer>
       </div>
     </div>
@@ -75,11 +75,11 @@
   <div class="content">
     <header class="user-info" id="userInfo">
       <div class="user-spending">
-        <p id="userSpending"></p>
+        <h3 id="userSpending"></h3>
       </div>
 
       <div class="profile">
-        <p id="username"></p><span class="material-symbols-outlined">
+        <h3 id="username"></h3><span class="material-symbols-outlined">
           face
         </span>
       </div>
@@ -114,15 +114,15 @@
     </main>
 
     <div class="trip-categories">
-      <section class="trip-type past" id="pastTrips">
+      <section class="trip-column past" id="pastTrips">
         <h3>Past Trips</h3>
       </section>
 
-      <section class="trip-type upcoming" id="upcomingTrips">
+      <section class="trip-column upcoming" id="upcomingTrips">
         <h3>Upcoming Trips</h3>
       </section>
 
-      <section class="trip-type pending" id="pendingTrips">
+      <section class="trip-column pending" id="pendingTrips">
         <h3>Pending Trips</h3>
       </section>
     </div>
