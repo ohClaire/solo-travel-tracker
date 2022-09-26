@@ -22,8 +22,6 @@ export const fetchAll = () => {
   ]);
 };
 
-// postData('http://localhost:3001/api/v1/trips', tripRequest())
-
 export const postTripRequest = (formData) => {
   fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
@@ -42,8 +40,6 @@ export const postTripRequest = (formData) => {
 }
 
 const displayErrorMessage = (data) => {
-  console.log(data)
-
   if (data.message.includes('successfully posted')) {
     errorMessage.innerText = 'We got your request! We will let you know when this has been processed.';
   } else {

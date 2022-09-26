@@ -92,7 +92,6 @@ const renderTripsForUser = () => {
   fetchData('trips')
     .then(data => {
       const traveler = new Traveler(randomUser, data.trips);
-      console.log(traveler)
       pastTrips.innerHTML = '<h3>Past Trips</h3>';
       upcomingTrips.innerHTML = '<h3>Upcoming Trips</h3>';
       pendingTrips.innerHTML = '<h3>Pending Trips</h3>';
@@ -115,7 +114,6 @@ const renderYearlySpending = () => {
   fetchData('trips')
     .then(data => {
       const traveler = new Traveler(randomUser, data.trips)
-
       const yearlySpending = traveler.getYearlySpendingOnTrips(allDestinations);
 
       userSpending.innerText = `Total Spending this past year: $${yearlySpending}`;
@@ -166,7 +164,6 @@ const handleCostEstimate = () => {
       }
       return {traveler, formData};
     }).then(({traveler, formData}) => {
-      console.log(traveler, formData, 'line 176')
       const estimate = traveler.getEstimatedCostForTrip(allDestinations.destinationsData, formData);
       renderCostEstimate(estimate);
     })
