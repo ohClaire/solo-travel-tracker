@@ -1,4 +1,6 @@
 html {
+  font-family: 'Alegreya';
+  font-size: 1rem;
   min-height: 100vh;
 }
 
@@ -20,7 +22,7 @@ p {
   align-items: center;
   padding: 4px;
   flex: 0 1 200px;
-  background-color: #CEE5D0;
+  background-color: white;
 }
 
 .travel-tracker-logo {
@@ -36,33 +38,39 @@ p {
   gap: 10px;
 }
 
-.sidebar-btn {
+.sidebar__btn {
   font-size: 1.5rem;
-  padding: 4px;
+  padding: 10px;
   width: 100%;
-  background-color: #FCF8E8;
+  background-color: #ECB390;
   border: 1px solid gainsboro;
-  border-radius: 3px;
+  border-radius: 12px;
+
   cursor: pointer;
-  box-shadow: 1px 1px 0.5px #94B49F;
+  box-shadow: 1px 1px 0.5px grey;
 }
 
-.sidebar-btn:hover {
+.sidebar__btn:hover {
   cursor: pointer;
-  background-color: #FCF8E8;
+  color: white;
+  background-color: #00917C;
+  box-shadow: 1px 1px 0.5px gray;
+  border-left: 0px;
+  border-top: 0px;
 }
 
 .user-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  gap: 10px;
 }
 
 .user-spending {
   display: flex;
   font-size: 1rem;
   align-items: center;
+  padding-left: 18px;
 }
 
 .username {
@@ -84,7 +92,7 @@ p {
   border-radius: 50%;
 }
 
-.content{
+.content {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
@@ -96,7 +104,6 @@ p {
   display:flex;
   justify-content:space-between;
   align-items: center;
-  padding-bottom: 10px;
 }
 
 .nav-title {
@@ -110,7 +117,7 @@ p {
   display: flex;
 }
 
-.nav-btn {
+.nav__btn {
   border-radius: 50%;
   padding: 10px;
 }
@@ -141,6 +148,11 @@ p {
 .image-container {
   padding-left: 10px;
   flex: 1 1 0px;
+}
+
+.trip-title {
+  display: flex;
+  justify-content: center;
 }
 
 .trip-image {
@@ -189,32 +201,24 @@ p {
   font-size: 1.25rem;
   border-radius: 14px;
   box-shadow: 3px 3px 2px #94B49F;
-  background-color: #CEE5D0;
+  background-color: #00917C;
   padding: 10px;
   gap: 2px;
 }
 
-.trip-btn {
+.trip__btn {
   font-size: 1rem;
   background-color: #FCF8E8;
   padding: 2px;
   border: 1px solid gainsboro;
-  border-radius: 2px;
-  cursor: pointer;
+  border-radius: 4px;
   box-shadow: 1px 1px 0.5px #94B49F;
 }
 
-.cost-estimate-btn {
-  background-color: transparent;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 0px;
-}
-
-.cost-estimate-btn:hover {
+.trip__btn:hover {
   cursor: pointer;
-  text-decoration: underline;     
-  text-decoration-color: #ECB390;  
+  background-color: white;
+  box-shadow: 1px 1px 0.5px gray;
 }
 
 .material-symbols-outlined {
@@ -230,15 +234,17 @@ p {
 }
 
 /* Add breakpoints so when the screen is less than 550px in width, everything goes into a column*/
-
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 760px) {
   body {
     flex-direction: column;
     font-size: 1.2rem;
   }
+  .sidebar {
+    padding-bottom: 0px;
+  }
   .travel-tracker-logo {
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
   }
   .trip {
     flex-direction: column;
