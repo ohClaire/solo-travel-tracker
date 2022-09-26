@@ -5,58 +5,47 @@ import './images/travel-tracker-logo.webp';
 import './images/profile.webp'
 
 // Import local files
-import { fetchData, fetchAll, postData } from './apiCalls.js';
+import { fetchData, fetchAll, postTripRequest } from './apiCalls.js';
 import Traveler from './travelers/Traveler';
-import Destination from './destinations/Destination';
+// import Destination from './destinations/Destination';
 import Trip from './trips/Trip';
 import DestinationsRepo from './destinations/DestinationsRepo';
 
 // Global variables
-const isBetween = require('dayjs/plugin/isBetween');
-// let allTravelers;
-let allDestinations
-// let allTrips;
+// const isBetween = require('dayjs/plugin/isBetween');
+let allDestinations;
 let randomUser;
 
 
 // Import third party libraries
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-dayjs.extend(isBetween);
-dayjs.extend(customParseFormat);
+// import dayjs from 'dayjs';
+// import customParseFormat from 'dayjs/plugin/customParseFormat';
+// dayjs.extend(isBetween);
+// dayjs.extend(customParseFormat);
 import MicroModal from 'micromodal';  
 
 // Query Selectors
-const username = document.querySelector('#username');
-const userSpending = document.querySelector('#userSpending');
-// const travelerType = document.querySelector('#travelerType');
-const pastTrips = document.querySelector('#pastTrips');
-const upcomingTrips = document.querySelector('#upcomingTrips');
-const pendingTrips = document.querySelector('#pendingTrips');
-const formDestinations = document.querySelector('#formDestinations');
+const username = document.getElementById('username');
+const userSpending = document.getElementById('userSpending');
+const pastTrips = document.getElementById('pastTrips');
+const upcomingTrips = document.getElementById('upcomingTrips');
+const pendingTrips = document.getElementById('pendingTrips');
+const formTitle = document.getElementById('modalFormTitle');
+const formDestinations = document.getElementById('formDestinations');
+const submitForm = document.getElementById('requestForm');
+const estimatedCost = document.getElementById('formEstimatedCost');
+const getEstimatedCost = document.getElementById('getEstimatedCost');
+const formTripDate = document.querySelector('#formTripDate');
+const formDestination = document.querySelector('#formDestinations');
+const formDuration = document.querySelector('#formDuration');
+const formNumOfTravelers = document.querySelector('#formNumOfTravelers');
 
 // Event Listeners
-window.addEventListener('load', renderApplication);
+window.addEventListener('load', () => renderApplication());
+submitForm.addEventListener('submit', (event) => handleFormSubmit(event));
+getEstimatedCost.addEventListener('click', () => handleCostEstimate());
 
-
-// Functions
-// function getData() {
-//   fetchAll()
-//   .then(data => {
-//     const destinationsData = data;
-//     allTrips = new TripsRepo(tripsData.trips);
-//     allTravelers = new TravelersRepo(travelersData.travelers, allTrips);
-//     allDestinations = new DestinationsRepo(destinationsData.destinations);
-  
-//     randomUser = new Traveler(travelersData.travelers[Math.floor(Math.random() * travelersData.travelers.length)], allTrips);
-    
-//     return { randomUser }
-//   }).then( ({ randomUser }) => {
-//     renderApplication(randomUser);
-//   }).catch((error) => console.log('There was a problem retrieving your data.', error));
-// };
-
-function renderApplication() {
+const renderApplication = () => {
   MicroModal.init();
 
   if (!randomUser) {
@@ -76,54 +65,114 @@ function renderApplication() {
       
     return null;
   }
-  console.log(randomUser, allDestinations)
   renderUsername();
   renderDestinationChoices();
   renderTripsForUser();
   renderYearlySpending();
 }
 
-function renderUsername() {
-  username.innerText = randomUser.name;
+const renderUsername = () => {
+  fetchData('trips')
+    .then(data => {
+      const traveler = new Traveler(randomUser, data.trips) 
+      username.innerText = traveler.name;
+      formTitle.innerText = `Where would you like to go on your next trip, ${traveler.getFirstName()}?`
+    })
 }
 
-function renderDestinationChoices() {
+const renderDestinationChoices = () => {
+  formDestinations.innerHTML = '<option value="" disabled selected>Select a destination</option>';
   allDestinations.destinationsData.forEach(data => {
-  const destinationName = data.destination
+    const destinationName = data.destination;
     formDestinations.innerHTML += `<option value="${destinationName}">${destinationName}</option>`;
   });
-  // show destinations in the main content?
 }
 
-function renderTripsForUser() {
+const renderTripsForUser = () => {
   fetchData('trips')
     .then(data => {
       const traveler = new Traveler(randomUser, data.trips);
-
+      console.log(traveler)
+      pastTrips.innerHTML = '<h3>Past Trips</h3>';
+      upcomingTrips.innerHTML = '<h3>Upcoming Trips</h3>';
+      pendingTrips.innerHTML = '<h3>Pending Trips</h3>';
       traveler.listOfTrips.forEach(userTrip => {
         const trip = new Trip(userTrip);
         const tripDestination = allDestinations.getDestinationById(trip.destinationID);
 
         if (trip.isPastTrip() && !trip.isPendingTrip()) {
-          pastTrips.innerHTML += `<button class="trip">${tripDestination.destination} on ${trip.date}</button>`;
+          pastTrips.innerHTML += `<button class="trip-btn">${tripDestination.destination} on ${trip.date}</button>`;
         } else if (trip.isUpcomingTrip() && !trip.isPendingTrip()) {
-          upcomingTrips.innerHTML += `<button class="trip">${tripDestination.destination} on ${trip.date}</button>`;
+          upcomingTrips.innerHTML += `<button class="trip-btn">${tripDestination.destination} on ${trip.date}</button>`;
         } else if (trip.isPendingTrip()) {
-          pendingTrips.innerHTML += `<button class="trip">${tripDestination.destination} on ${trip.date}</button>`;
+          pendingTrips.innerHTML += `<button class="trip-btn">${tripDestination.destination} on ${trip.date}</button>`;
         }
       });
     }).catch(err => console.log('There was a problem retrieving your data', err))
 }
 
-function renderYearlySpending() {
+const renderYearlySpending = () => {
   fetchData('trips')
     .then(data => {
       const traveler = new Traveler(randomUser, data.trips)
-      console.log(traveler)
+
       const yearlySpending = traveler.getYearlySpendingOnTrips(allDestinations);
 
       userSpending.innerText = `Total Spending this past year: $${yearlySpending}`;
     }).catch(err => console.log('There was a problem retrieving your data', err))
 }
 
+const changeDateFormat = (date) => {
+  return date.split('-').join('/');
+}
+
+const handleFormSubmit = (event) => {
+  event.preventDefault();
+  fetchData('trips')
+    .then(data => {
+      let tripsLength = data.trips.length;
+      let formData = {
+        id: tripsLength + 1,
+        userID: randomUser.id,
+        destinationID: allDestinations.getDestinationIdByName(formDestination.value),
+        travelers: parseInt(formNumOfTravelers.value),
+        date: changeDateFormat(formTripDate.value),
+        duration: parseInt(formDuration.value),
+        status: 'pending',
+        suggestedActivities: [],
+      }
+      return formData;
+    }).then(formData => {
+      postTripRequest(formData);
+      renderApplication();
+      event.target.reset();
+    })
+}
+
+const handleCostEstimate = () => {
+  fetchData('trips')
+    .then(data => {
+      const traveler = new Traveler(randomUser, data.trips);
+      let tripsLength = data.trips.length;
+      let formData = {
+        id: tripsLength + 1,
+        userID: randomUser.id,
+        destinationID: allDestinations.getDestinationIdByName(formDestination.value),
+        travelers: parseInt(formNumOfTravelers.value),
+        date: changeDateFormat(formTripDate.value),
+        duration: parseInt(formDuration.value),
+        status: 'pending',
+        suggestedActivities: [],
+      }
+      return {traveler, formData};
+    }).then(({traveler, formData}) => {
+      console.log(traveler, formData, 'line 176')
+      const estimate = traveler.getEstimatedCostForTrip(allDestinations.destinationsData, formData);
+      renderCostEstimate(estimate);
+    })
+}
+
+const renderCostEstimate = (estimate) => {
+  estimatedCost.innerHTML += `<h3>Estimated Cost: $${estimate}</h3>`;
+}
 
