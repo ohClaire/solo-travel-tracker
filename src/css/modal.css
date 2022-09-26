@@ -1,7 +1,11 @@
 .modal {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  display: none;
 }
 
+.modal.is-open {
+  display: block;
+}
 
 .modal__overlay {
   position: fixed;
@@ -18,11 +22,13 @@
 .modal__container {
   background-color: #fff;
   padding: 30px;
-  max-width: 500px;
-  max-height: 100vh;
+  /* max-width: 500px;
+  max-height: 100vh; */
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+  width: 70%;
+  height: 50%;
 }
 
 .modal__title {

@@ -20,6 +20,7 @@ p {
   align-items: center;
   padding: 4px;
   flex: 0 1 200px;
+  background-color: #CEE5D0;
 }
 
 .travel-tracker-logo {
@@ -37,13 +38,18 @@ p {
 
 .sidebar-btn {
   font-size: 1.5rem;
-  border: 0px;
   padding: 4px;
   width: 100%;
+  background-color: #FCF8E8;
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0.5px #94B49F;
 }
 
 .sidebar-btn:hover {
-  background-color: rgb(254, 192, 115);
+  cursor: pointer;
+  background-color: #FCF8E8;
 }
 
 .user-info {
@@ -55,8 +61,12 @@ p {
 
 .user-spending {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   align-items: center;
+}
+
+.username {
+  font-size: 1rem;
 }
 
 .profile {
@@ -78,7 +88,7 @@ p {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(198, 223, 245);
+  background-color: #ECB390;
   flex: 1 1 0px;
 }
 
@@ -91,8 +101,7 @@ p {
 
 .nav-title {
   padding-left: 20px;
-  font-weight: bolder;
-  font-size: 20px;
+  font-size: 2rem;
   flex: 1 1 0px;
 }
 
@@ -117,9 +126,11 @@ p {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
-  border: 1px solid black;
+  border-top: none;
   border-radius: 10px;
   padding: 20px;
+  background-color: #FCF8E8;
+  box-shadow: 3px 3px 2px gainsboro;
 }
 
 .trip {
@@ -146,15 +157,6 @@ p {
   padding-left: 30px;
 }
 
-/* .form-container {
-  background-color: rgb(254, 192, 115);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 0px;
-  padding: 20px;
-} */
-
 .form-title {
   padding-left: 20px;
   font-size: 1.8rem;
@@ -180,14 +182,39 @@ p {
   gap: 20px;
 }
 
-.trip-type {
+.trip-column {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
   font-size: 1.25rem;
   border-radius: 14px;
-  border: 2px solid white;
+  box-shadow: 3px 3px 2px #94B49F;
+  background-color: #CEE5D0;
   padding: 10px;
+  gap: 2px;
+}
+
+.trip-btn {
+  font-size: 1rem;
+  background-color: #FCF8E8;
+  padding: 2px;
+  border: 1px solid gainsboro;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0.5px #94B49F;
+}
+
+.cost-estimate-btn {
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 0px;
+}
+
+.cost-estimate-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;     
+  text-decoration-color: #ECB390;  
 }
 
 .material-symbols-outlined {
@@ -198,14 +225,9 @@ p {
   'opsz' 48
 }
 
-.modal {
-  display: none;
+.hidden {
+  display: none
 }
-
-.modal.is-open {
-  display: block;
-}
-        
 
 /* Add breakpoints so when the screen is less than 550px in width, everything goes into a column*/
 

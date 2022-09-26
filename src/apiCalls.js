@@ -1,3 +1,5 @@
+const errorMessage = document.getElementById('postErrorMessage');
+
 export const fetchData = (fileName) => {
   return fetch(`http://localhost:3001/api/v1/${fileName}`)
     .then((response) => response.json())
@@ -20,6 +22,28 @@ export const fetchAll = () => {
   ]);
 };
 
-export const postData = () => {
+export const postTripRequest = (formData) => {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: {
+      'Content-Type' : 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message) {
+        console.log(data.message);
+        displayErrorMessage(data);
+      }
+    }).catch(err => displayErrorMessage(err))
+}
 
+const displayErrorMessage = (data) => {
+  if (data.message.includes('successfully posted')) {
+    errorMessage.innerText = 'We got your request! We will let you know when this has been processed.';
+  } else {
+    errorMessage.innerText = `There was an issue processing your request. ${data.message}`
+  }
+  errorMessage.classList.remove('hidden');
 }
