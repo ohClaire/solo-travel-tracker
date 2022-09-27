@@ -46,9 +46,7 @@ class Traveler {
   }
 
   getEstimatedCostForTrip(listOfDestinations, userInputs) {
-    console.log(listOfDestinations, userInputs)
     const destination = new Destination(listOfDestinations.find(d => d.destination === userInputs.destination));
-    console.log(destination)
     const estimatedLogdingCost = destination.getTotalCostOfLodging(userInputs.duration);
     const estimatedFlightCost = destination.getTotalCostOfFlights(userInputs.travelers);
     const tripEstimate = estimatedLogdingCost + estimatedFlightCost;
