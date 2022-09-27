@@ -1,6 +1,6 @@
 .modal {
-  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   display: none;
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
 
 .modal.is-open {
@@ -8,31 +8,30 @@
 }
 
 .modal__overlay {
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
   border-radius: 12px;
-  overflow-y: auto;
   box-sizing: border-box;
-  width: 60%;
   height: 50%;
+  overflow-y: auto;
+  padding: 30px;
+  width: 60%;
 }
 
 .modal__title {
-  font-size: 1.25rem;
   color: #00917C;
-
+  font-size: 1.25rem;
 }
 
 .modal__close {
@@ -46,22 +45,22 @@
 }
 
 .modal__content {
+  color: rgba(0,0,0,.8);
+  line-height: 1.5;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  line-height: 1.5;
-  color: rgba(0,0,0,.8);
 }
 
 .modal__btn {
+  border-radius: 0.25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
   font-size: .875rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border-radius: 0.25rem;
-  border-style: none;
-  border-width: 0;
-  cursor: pointer;
   overflow: visible;
 }
 
@@ -80,14 +79,14 @@
 
 .cost-estimate__btn {
   background-color: transparent;
+  border: 0px;
   font-size: 1rem;
   font-weight: bold;
-  border: 0px;
 }
 
 .cost-estimate__btn:hover {
-  cursor: pointer;
   color: #ec8442;
+  cursor: pointer;
   text-decoration: underline;     
   text-decoration-color: #ec8442;  
 }
