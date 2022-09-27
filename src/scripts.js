@@ -137,7 +137,6 @@ const handleFormSubmit = (event) => {
   fetchData('trips')
     .then(data => {
       let tripsLength = data.trips.length;
-      console.log(allDestinations)
       let formData = {
         id: tripsLength + 1,
         userID: randomUser.id,
@@ -230,7 +229,7 @@ const renderSelectedTrip = (event) => {
       const destinationId = allDestinations.getDestinationIdByName(destinationName);
       const tripObj = traveler.listOfTrips.find(trip => trip.destinationID === destinationId)
       const destination = allDestinations.getDestinationById(destinationId);
-      
+
       previewDestination.innerText = destination.destination;
       previewImage.src = destination.image;
       previewImage.alt = destination.alt;
