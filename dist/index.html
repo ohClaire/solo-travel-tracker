@@ -17,9 +17,7 @@
   <aside class="sidebar">
     <img class="travel-tracker-logo" src="./images/travel-tracker-logo.webp" alt="Travel Tracker logo">
     <div class="sidebar-buttons">
-      <!-- <button class="sidebar__btn">Home</button> -->
       <button class="sidebar__btn" data-micromodal-trigger="modalForm">Request a Trip</button>
-      <!-- <button class="sidebar__btn">Contact Travel Agency</button> -->
       <h2 class="end" id="countdown">Countdown to your next trip:</h2>
     </div>
   </aside>
@@ -40,24 +38,20 @@
                 <label for="formTripDate">Date: </label>
                 <input type="date" min="" class="trip-start" id="formTripDate" name="Trip Start" required>
               </div>
-
               <div class="user-input">
                 <label for="formDestinations">Destination:</label>
                 <select name="destinations" id="formDestinations" required>
                   <option value="" disabled>Select a destination</option>
                 </select>
               </div>
-
               <div class="user-input">
                 <label for="formDuration">Duration:</label>
                 <input type="number" id="formDuration" placeholder="Enter number" name="trip duration" min="1" required>
               </div>
-
               <div class="user-input">
                 <label for="formNumOfTravelers">Number of Travelers:</label>
                 <input type="number" name="number of travelers" min="1" max="16" id="formNumOfTravelers" required>
               </div>
-
               <div class="end form-buttons">
                 <button class="modal__btn modal__btn-primary" type="submit" id="bookTripBtn" disabled>Book
                   Trip</button>
@@ -69,7 +63,6 @@
         </div>
         <button class="cost-estimate__btn" id="getEstimatedCost" disabled>Get Cost Estimate?</button>
         <article id="formEstimatedCost">
-
         </article>
         <footer class="modal__footer">
           <p id="postErrorMessage" class="hidden"></p>
@@ -82,20 +75,17 @@
       <div class="user-spending">
         <h3 id="userSpending"></h3>
       </div>
-
       <div class="profile">
         <h3 id="username"></h3><span class="material-symbols-outlined">
           face
         </span>
       </div>
     </header>
-
     <nav class="nav">
       <h1 class="nav-title">Destinations</h1>
     </nav>
 
     <main>
-      <!-- When a trip__btn is clicked, show this in the main page -->
       <section class="home">
         <h2 class="end" id="previewDestination">Destination</h2>
         <div class="trip">
@@ -116,11 +106,9 @@
       <section class="trip-column past" id="pastTrips">
         <h3 class="trip-title">Past Trips</h3>
       </section>
-
       <section class="trip-column upcoming" id="upcomingTrips">
         <h3 class="trip-title">Upcoming Trips</h3>
       </section>
-
       <section class="trip-column pending" id="pendingTrips">
         <h3 class="trip-title">Pending Trips</h3>
       </section>
