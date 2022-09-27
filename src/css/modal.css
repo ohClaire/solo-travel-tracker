@@ -84,10 +84,6 @@
   font-weight: bold;
 }
 
-.cost-estimate__btn:disabled {
-  color: #00917C;
-}
-
 .cost-estimate__btn:hover {
   color: #ec8442;
   cursor: pointer;
