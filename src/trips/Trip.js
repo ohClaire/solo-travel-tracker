@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'; 
 const isBetween = require('dayjs/plugin/isBetween');
 dayjs.extend(isBetween);
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 class Trip {
   constructor(tripDetails) {
@@ -15,7 +17,12 @@ class Trip {
   }
 
   getDate(date) {
-    return date.slice(0, 10);
+    if (date.length <= 9) {
+      const parsed = dayjs(date).format('YYYY/MM/DD');
+      return parsed;
+    } else {
+      return date.slice(0, 10);
+    }
   }
 
   isPastTrip() {

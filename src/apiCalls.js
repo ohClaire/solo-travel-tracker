@@ -40,10 +40,8 @@ export const postTripRequest = (formData) => {
 }
 
 const displayErrorMessage = (data) => {
-  if (data.message.includes('successfully posted')) {
-    errorMessage.innerText = 'We got your request! We will let you know when this has been processed.';
-  } else {
-    errorMessage.innerText = `There was an issue processing your request. ${data.message}`
+  if (!data.message.includes('successfully posted')) {
+    errorMessage.innerText = `There was an issue processing your request. ${data.message}`;
   }
   errorMessage.classList.remove('hidden');
 }
