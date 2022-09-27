@@ -1,7 +1,9 @@
 .login-start {
   margin: 0 auto;
   padding: 20px;
-  width: 100px;
+  width: 180px;
+  text-align: center;
+  color:#00917C;
 }
 
 .modal {
