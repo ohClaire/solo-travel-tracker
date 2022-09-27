@@ -5,7 +5,6 @@ html {
 }
 
 body {
-  /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
   display: flex;
   margin: 0px;
   min-height: 100vh;
@@ -13,6 +12,10 @@ body {
 
 p {
   margin: 0px;
+}
+
+button {
+  font-family: 'Alegreya';
 }
 
 .sidebar {
@@ -68,8 +71,9 @@ p {
 .user-spending {
   align-items: center;
   display: flex;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding-left: 18px;
+  text-align: center;
 }
 
 .username {

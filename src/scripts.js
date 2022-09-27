@@ -12,16 +12,10 @@ import Trip from './trips/Trip';
 import DestinationsRepo from './destinations/DestinationsRepo';
 
 // Global variables
-// const isBetween = require('dayjs/plugin/isBetween');
 let allDestinations;
 let randomUser;
 
-
 // Import third party libraries
-// import dayjs from 'dayjs';
-// import customParseFormat from 'dayjs/plugin/customParseFormat';
-// dayjs.extend(isBetween);
-// dayjs.extend(customParseFormat);
 import MicroModal from 'micromodal';  
 
 // Query Selectors

@@ -1,6 +1,6 @@
 .modal {
   display: none;
-  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  font-family: 'Alegreya';
 }
 
 .modal.is-open {
@@ -56,7 +56,7 @@
   border-style: none;
   border-width: 0;
   cursor: pointer;
-  font-size: .875rem;
+  font-size: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -65,7 +65,7 @@
 }
 
 .modal__btn:disabled {
-  background-color: gray;
+  background-color: rgb(95, 94, 94);
 }
 
 .modal__btn:focus, .modal__btn:hover {
@@ -80,8 +80,12 @@
 .cost-estimate__btn {
   background-color: transparent;
   border: 0px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
+}
+
+.cost-estimate__btn:disabled {
+  color: #00917C;
 }
 
 .cost-estimate__btn:hover {
