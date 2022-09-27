@@ -12,7 +12,7 @@ import DestinationsRepo from './destinations/DestinationsRepo';
 
 // Global variables
 let allDestinations;
-let randomUser;
+let currentUser;
 
 // Import third party libraries
 import MicroModal from 'micromodal';
@@ -33,7 +33,6 @@ const formTitle = document.getElementById('modalFormTitle');
 const formDestinations = document.getElementById('formDestinations');
 const tripRequestForm = document.getElementById('requestForm');
 const bookTripBtn = document.getElementById('bookTripBtn');
-const cancelBookingBtn = document.getElementById('cancelBookingBtn');
 const estimatedCost = document.getElementById('formEstimatedCost');
 const getEstimatedCost = document.getElementById('getEstimatedCost');
 const formTripDate = document.getElementById('formTripDate');
@@ -41,70 +40,71 @@ const formDestination = document.getElementById('formDestinations');
 const formDuration = document.getElementById('formDuration');
 const formNumOfTravelers = document.getElementById('formNumOfTravelers');
 const tripsContainer = document.getElementById('tripsContainer');
+const loginForm = document.getElementById('loginForm');
+const usernameLogin = document.getElementById('usernameLogin');
+const password = document.getElementById('password');
+const loginPage = document.getElementById('loginPage');
+const userPage = document.getElementById('userPage');
+const invalidLogin = document.getElementById('invalidLogin');
 
 // Event Listeners
-window.addEventListener('load', () => renderApplication());
+window.addEventListener('load', () => startApplication());
 tripRequestForm.addEventListener('change', () => handleButtonState());
 tripRequestForm.addEventListener('submit', (event) => handleFormSubmit(event));
 getEstimatedCost.addEventListener('click', () => handleCostEstimate());
-cancelBookingBtn.addEventListener('click', () => resetForm());
-tripsContainer.addEventListener('click', (event) => renderSelectedTrip(event));
+tripsContainer.addEventListener('click', (event) => renderSelectedTrip(event))
+loginForm.addEventListener('submit', (event) => handleLogin(event));
 
 // Functions
-const renderApplication = () => {
+const startApplication = () => {
   MicroModal.init();
+}
 
-  if (!randomUser) {
-    fetchData('travelers')
-      .then(data => {
-        randomUser = data.travelers[Math.floor(Math.random() * data.travelers.length)];
-        renderApplication();
-      }).catch(err => console.log('There was a problem retrieving your data', err));
-    return null;
-  }
+const renderApplication = () => {
   if (!allDestinations) {
     fetchData('destinations')
       .then(data => {
         allDestinations = new DestinationsRepo(data.destinations);
         renderApplication();
-      }).catch(err => console.log('There was a problem retrieving your data', err))
-      
+      }).catch((error) => console.log('There was a problem retrieving your data.', error));
+
     return null;
   }
-  renderUsername();
-  renderDestinationChoices();
-  renderTripsForUser();
-  renderYearlySpending();
-  renderMostRecentTrip();
+
+  if (currentUser && allDestinations) {
+    renderUsername();
+    renderDestinationChoices(allDestinations);
+    renderTripsForUser();
+    renderYearlySpending();
+    renderMostRecentTrip();
+  }
 }
+  
 
 const renderUsername = () => {
   fetchData('trips')
     .then(data => {
-      const traveler = new Traveler(randomUser, data.trips) 
+      const traveler = new Traveler(currentUser, data.trips);
       username.innerText = traveler.name;
-      formTitle.innerText = `Where would you like to go next, ${traveler.getFirstName()}?`
+      formTitle.innerText = `Where would you like to go next, ${traveler.getFirstName()}?`;
     })
 }
 
 const renderDestinationChoices = () => {
   formDestinations.innerHTML = '<option value="" disabled selected>Select a destination</option>';
-  fetchData('destinations')
-    .then(data => {
-      data.destinations.forEach(object => {
-        formDestinations.innerHTML += `<option value="${object.destination}">${object.destination}</option>`;
-      });
-    }).catch(err => console.log('There was a problem retrieving your data', err))
+  allDestinations.destinationsData.forEach(object => {
+    formDestinations.innerHTML += `<option value="${object.destination}">${object.destination}</option>`;
+  });
 }
 
 const renderTripsForUser = () => {
   fetchData('trips')
     .then(data => {
-      const traveler = new Traveler(randomUser, data.trips);
+      currentUser = new Traveler(currentUser, data.trips);
       pastTrips.innerHTML = '<h3 class="trip-title">Past Trips</h3>';
       upcomingTrips.innerHTML = '<h3 class="trip-title">Upcoming Trips</h3>';
       pendingTrips.innerHTML = '<h3 class="trip-title">Pending Trips</h3>';
-      traveler.listOfTrips.forEach(userTrip => {
+      currentUser.listOfTrips.forEach(userTrip => {
         const trip = new Trip(userTrip);
         const tripDestination = allDestinations.getDestinationById(trip.destinationID);
 
@@ -121,11 +121,11 @@ const renderTripsForUser = () => {
 
 const renderYearlySpending = () => {
   fetchData('trips')
-    .then(data => {
-      const traveler = new Traveler(randomUser, data.trips)
-      const yearlySpending = traveler.getYearlySpendingOnTrips(allDestinations);
-      userSpending.innerText = `Total Spending this past year: $${yearlySpending}`;
-    }).catch(err => console.log('There was a problem retrieving your data', err))
+  .then(data => {
+    currentUser = new Traveler(currentUser, data.trips)
+    const yearlySpending = currentUser.getYearlySpendingOnTrips(allDestinations);
+    userSpending.innerText = `Total Spending this past year: $${yearlySpending}`;
+  });
 }
 
 const changeDateFormat = (date) => {
@@ -139,7 +139,7 @@ const handleFormSubmit = (event) => {
       let tripsLength = data.trips.length;
       let formData = {
         id: tripsLength + 1,
-        userID: randomUser.id,
+        userID: currentUser.id,
         destinationID: allDestinations.getDestinationIdByName(formDestination.value),
         travelers: parseInt(formNumOfTravelers.value),
         date: changeDateFormat(formTripDate.value),
@@ -152,13 +152,9 @@ const handleFormSubmit = (event) => {
       postTripRequest(formData);
       renderApplication();
       handleButtonState();
-      resetForm();
+      event.target.reset();
       resetEstimatedCost();
     })
-}
-
-const resetForm = () => {
-  tripRequestForm.reset();
 }
 
 const resetEstimatedCost = () => {
@@ -168,14 +164,13 @@ const resetEstimatedCost = () => {
 const handleCostEstimate = () => {
   fetchData('trips')
     .then(data => {
-      const traveler = new Traveler(randomUser, data.trips);
+      currentUser = new Traveler(currentUser, data.trips);
       let userInputs = {
         destination: formDestination.value, 
         travelers: parseInt(formNumOfTravelers.value),
-        date: changeDateFormat(formTripDate.value),
         duration: parseInt(formDuration.value),
       }
-      const estimate = traveler.getEstimatedCostForTrip(allDestinations.destinationsData, userInputs);
+      const estimate = currentUser.getEstimatedCostForTrip(allDestinations.destinationsData, userInputs);
       renderCostEstimate(estimate);
     })
 }
@@ -202,8 +197,8 @@ const handleButtonState = () => {
 const renderMostRecentTrip = () => {
   fetchData('trips')
     .then(data => {
-      const traveler = new Traveler(randomUser, data.trips);
-      const mostRecentTrip = traveler.listOfTrips[0]
+      const traveler = new Traveler(currentUser, data.trips);
+      const mostRecentTrip = traveler.listOfTrips[0];
       const destination = allDestinations.getDestinationById(mostRecentTrip.destinationID)
 
       previewDestination.innerText = destination.destination;
@@ -222,7 +217,7 @@ const renderMostRecentTrip = () => {
 const renderSelectedTrip = (event) => {
   fetchData('trips') 
     .then(data => {
-      const traveler = new Traveler(randomUser, data.trips);
+      const traveler = new Traveler(currentUser, data.trips);
       const getInnerText = event.target.innerText;
       const splitText = getInnerText.split(' ');
       const destinationName = splitText.slice(0, splitText.length - 2).join(' ');
@@ -242,5 +237,28 @@ const renderSelectedTrip = (event) => {
         duration: parseInt(tripObj.duration),
       })}`
     })
-  
+}
+
+const handleLogin = (event) => {
+  event.preventDefault();
+  if (usernameLogin.value === 'traveler50' && 
+  password.value === 'travel') {
+    loginPage.classList.add('hidden');
+    userPage.classList.remove('hidden');
+    event.target.reset();
+
+    fetchData('travelers/50')
+      .then(data => {
+        currentUser = data;
+        renderApplication();
+      }).catch((error) => console.log('There was a problem retrieving your data.', error));
+  } else {
+    renderInvalidLogin();
+    event.target.reset();
+  }
+}
+
+const renderInvalidLogin = () => {
+  invalidLogin.innerText = 'Invalid login. Please try again.'
+  invalidLogin.classList.remove('hidden');
 }

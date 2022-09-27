@@ -1,3 +1,9 @@
+.login-start {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100px;
+}
+
 .modal {
   display: none;
   font-family: 'Alegreya';
