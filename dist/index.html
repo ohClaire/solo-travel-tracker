@@ -20,6 +20,7 @@
       <!-- <button class="sidebar__btn">Home</button> -->
       <button class="sidebar__btn" data-micromodal-trigger="modalForm">Request a Trip</button>
       <!-- <button class="sidebar__btn">Contact Travel Agency</button> -->
+      <h2 class="end" id="countdown">Countdown to your next trip:</h2>
     </div>
   </aside>
 
@@ -91,33 +92,27 @@
 
     <nav class="nav">
       <h1 class="nav-title">Destinations</h1>
-      <div class="nav-buttons">
-        <!-- <button class="nav__btn">Back</button>
-        <button class="nav__btn">Next</button> -->
-      </div>
     </nav>
 
     <main>
+      <!-- When a trip__btn is clicked, show this in the main page -->
       <section class="home">
-        <h2 class="end" id="countdown">countdown</h2>
+        <h2 class="end" id="previewDestination">Destination</h2>
         <div class="trip">
           <div id="imageContainer" class="image-container">
-            <img class="trip-image"
-              src="https://travellersworldwide.com/wp-content/uploads/2022/06/shutterstock_704449474.png.webp"
-              alt="Train passing the Swiss Alps" />
+            <img id="previewImage" class="trip-image" src="" alt="" />
           </div>
           <div class="trip-details">
-            <p class="trip-date" id="tripDate">Date</p>
-            <p id="destination">Destination</p>
-            <p id="duration">Duration</p>
-            <p id="numberOfPeople">Number of People</p>
-            <h3 id="tripCost" class="end">Total Cost</h3>
+            <p class="trip-date" id="previewTripDate">Date</p>
+            <p id="previewDuration">Duration</p>
+            <p id="previewNumberOfPeople">Number of People</p>
+            <h3 id="previewTripCost" class="end">Total Cost</h3>
           </div>
         </div>
       </section>
     </main>
 
-    <div class="trip-categories">
+    <div class="trip-categories" id="tripsContainer">
       <section class="trip-column past" id="pastTrips">
         <h3 class="trip-title">Past Trips</h3>
       </section>
@@ -133,6 +128,7 @@
   </div>
 
   <script src="bundle.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 </body>
 
 </html>
