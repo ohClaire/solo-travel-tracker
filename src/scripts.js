@@ -5,9 +5,8 @@ import './images/travel-tracker-logo.webp';
 import './images/profile.webp'
 
 // Import local files
-import { fetchData, fetchAll, postTripRequest } from './apiCalls.js';
+import { fetchData, postTripRequest } from './apiCalls.js';
 import Traveler from './travelers/Traveler';
-// import Destination from './destinations/Destination';
 import Trip from './trips/Trip';
 import DestinationsRepo from './destinations/DestinationsRepo';
 
@@ -16,11 +15,17 @@ let allDestinations;
 let randomUser;
 
 // Import third party libraries
-import MicroModal from 'micromodal';  
+import MicroModal from 'micromodal';
 
 // Query Selectors
 const username = document.getElementById('username');
 const userSpending = document.getElementById('userSpending');
+const previewDestination = document.getElementById('previewDestination');
+const previewTripDate = document.getElementById('previewTripDate');
+const previewDuration = document.getElementById('previewDuration');
+const previewNumberOfPeople = document.getElementById('previewNumberOfPeople');
+const previewTripCost = document.getElementById('previewTripCost');
+const previewImage = document.getElementById('previewImage');
 const pastTrips = document.getElementById('pastTrips');
 const upcomingTrips = document.getElementById('upcomingTrips');
 const pendingTrips = document.getElementById('pendingTrips');
@@ -31,10 +36,11 @@ const bookTripBtn = document.getElementById('bookTripBtn');
 const cancelBookingBtn = document.getElementById('cancelBookingBtn');
 const estimatedCost = document.getElementById('formEstimatedCost');
 const getEstimatedCost = document.getElementById('getEstimatedCost');
-const formTripDate = document.querySelector('#formTripDate');
-const formDestination = document.querySelector('#formDestinations');
-const formDuration = document.querySelector('#formDuration');
-const formNumOfTravelers = document.querySelector('#formNumOfTravelers');
+const formTripDate = document.getElementById('formTripDate');
+const formDestination = document.getElementById('formDestinations');
+const formDuration = document.getElementById('formDuration');
+const formNumOfTravelers = document.getElementById('formNumOfTravelers');
+const tripsContainer = document.getElementById('tripsContainer');
 
 // Event Listeners
 window.addEventListener('load', () => renderApplication());
@@ -42,7 +48,9 @@ tripRequestForm.addEventListener('change', () => handleButtonState());
 tripRequestForm.addEventListener('submit', (event) => handleFormSubmit(event));
 getEstimatedCost.addEventListener('click', () => handleCostEstimate());
 cancelBookingBtn.addEventListener('click', () => resetForm());
+tripsContainer.addEventListener('click', (event) => renderSelectedTrip(event));
 
+// Functions
 const renderApplication = () => {
   MicroModal.init();
 
@@ -67,6 +75,7 @@ const renderApplication = () => {
   renderDestinationChoices();
   renderTripsForUser();
   renderYearlySpending();
+  renderMostRecentTrip();
 }
 
 const renderUsername = () => {
@@ -128,6 +137,7 @@ const handleFormSubmit = (event) => {
   fetchData('trips')
     .then(data => {
       let tripsLength = data.trips.length;
+      console.log(allDestinations)
       let formData = {
         id: tripsLength + 1,
         userID: randomUser.id,
@@ -160,9 +170,8 @@ const handleCostEstimate = () => {
   fetchData('trips')
     .then(data => {
       const traveler = new Traveler(randomUser, data.trips);
-      // let tripsLength = data.trips.length;
       let userInputs = {
-        destinationID: formDestination.value, 
+        destination: formDestination.value, 
         travelers: parseInt(formNumOfTravelers.value),
         date: changeDateFormat(formTripDate.value),
         duration: parseInt(formDuration.value),
@@ -191,4 +200,48 @@ const handleButtonState = () => {
   }
 }
 
+const renderMostRecentTrip = () => {
+  fetchData('trips')
+    .then(data => {
+      const traveler = new Traveler(randomUser, data.trips);
+      const mostRecentTrip = traveler.listOfTrips[0]
+      const destination = allDestinations.getDestinationById(mostRecentTrip.destinationID)
 
+      previewDestination.innerText = destination.destination;
+      previewImage.src = destination.image;
+      previewImage.alt = destination.alt;
+      previewTripDate.innerText = mostRecentTrip.date;
+      previewDuration.innerText = `${mostRecentTrip.duration} days`;
+      previewNumberOfPeople.innerText = `${mostRecentTrip.travelers} travelers`;
+      previewTripCost.innerText = `Cost $${traveler.getEstimatedCostForTrip(allDestinations.destinationsData, {
+        destination: destination.destination, 
+        travelers: parseInt(mostRecentTrip.travelers),
+        duration: parseInt(mostRecentTrip.duration),
+      })}`
+    })
+}
+const renderSelectedTrip = (event) => {
+  fetchData('trips') 
+    .then(data => {
+      const traveler = new Traveler(randomUser, data.trips);
+      const getInnerText = event.target.innerText;
+      const splitText = getInnerText.split(' ');
+      const destinationName = splitText.slice(0, splitText.length - 2).join(' ');
+      const destinationId = allDestinations.getDestinationIdByName(destinationName);
+      const tripObj = traveler.listOfTrips.find(trip => trip.destinationID === destinationId)
+      const destination = allDestinations.getDestinationById(destinationId);
+      
+      previewDestination.innerText = destination.destination;
+      previewImage.src = destination.image;
+      previewImage.alt = destination.alt;
+      previewTripDate.innerText = tripObj.date;
+      previewDuration.innerText = `${tripObj.duration} days`;
+      previewNumberOfPeople.innerText = `${tripObj.travelers} travelers`;
+      previewTripCost.innerText = `Cost $${traveler.getEstimatedCostForTrip(allDestinations.destinationsData, {
+        destination: destinationName, 
+        travelers: parseInt(tripObj.travelers),
+        duration: parseInt(tripObj.duration),
+      })}`
+    })
+  
+}
