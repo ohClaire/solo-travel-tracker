@@ -7,12 +7,6 @@ class Destination {
     this.image = destinationDetails.image;
     this.alt = destinationDetails.alt;
   }
-  
-  getDestinationIdByName(locationName) {
-    if (this.destination === locationName) {
-      return this.id;
-    }
-  }
 
   getTotalCostOfLodging(duration) {
     return this.estimatedLodgingCostPerDay * duration;

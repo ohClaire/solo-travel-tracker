@@ -16,7 +16,7 @@ describe('Traveler', () => {
     traveler2 = new Traveler(travelersData[1], tripsData);
     destinationsRepo = new DestinationsRepo(destinationsData);
     userInputs = {
-      destinationID: "Lima, Peru",
+      destination: "Lima, Peru",
       travelers: 2,
       date: 2022/12/12,
       duration: 10,

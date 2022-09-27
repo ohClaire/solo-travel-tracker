@@ -41,4 +41,9 @@ describe('Destinations Repository', () => {
   it('should not return a destination object if id does not exist', () => {
     expect(allLocations.getDestinationById(51)).to.equal(undefined);
   });
+
+  it('should return the destination ID by the name of destination', () => {
+    expect(allLocations.getDestinationIdByName('Lima, Peru')).to.equal(1);
+    expect(allLocations.getDestinationIdByName('Stockholm, Sweden')).to.equal(2);
+  });
 });

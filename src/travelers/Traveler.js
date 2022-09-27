@@ -18,7 +18,6 @@ class Traveler {
   getYearlySpendingOnTrips(listOfDestinations) {
     const userSpending = this.listOfTrips.reduce((sum, userTrip) => {    
       const trip = new Trip(userTrip);
-      console.log(listOfDestinations)
       const tripDestination = new Destination(listOfDestinations.getDestinationById(trip.destinationID));
       const totalLodgingCost = tripDestination.getTotalCostOfLodging(trip.duration);
       const totalFlightCost = tripDestination.getTotalCostOfFlights(trip.numOfTravelers);
@@ -33,7 +32,6 @@ class Traveler {
 
     const agentFee = userSpending * .10;
     const total = userSpending + agentFee;
-
     return total.toLocaleString("en-US");
   }
 
@@ -48,7 +46,7 @@ class Traveler {
   }
 
   getEstimatedCostForTrip(listOfDestinations, userInputs) {
-    const destination = new Destination(listOfDestinations.find(d => d.destination === userInputs.destinationID));
+    const destination = new Destination(listOfDestinations.find(d => d.destination === userInputs.destination));
     const estimatedLogdingCost = destination.getTotalCostOfLodging(userInputs.duration);
     const estimatedFlightCost = destination.getTotalCostOfFlights(userInputs.travelers);
     const tripEstimate = estimatedLogdingCost + estimatedFlightCost;

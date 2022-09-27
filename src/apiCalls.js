@@ -11,17 +11,6 @@ export const fetchData = (fileName) => {
     );
 };
 
-export const fetchAll = () => {
-  const travelersData = fetchData('travelers');
-  const destinationsData = fetchData('destinations');
-  const tripsData = fetchData('trips');
-  return Promise.all([
-    travelersData,
-    destinationsData,
-    tripsData,
-  ]);
-};
-
 export const postTripRequest = (formData) => {
   fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',

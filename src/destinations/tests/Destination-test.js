@@ -44,9 +44,4 @@ describe('Destination', () => {
     expect(destination1.alt).to.equal("overview of city buildings with a clear sky");
     expect(destination2.alt).to.equal("city with boats on the water during the day time");
   });
-
-  it('should return the destination ID by the name of destination', () => {
-    expect(destination1.getDestinationIdByName('Lima, Peru')).to.equal(1);
-    expect(destination2.getDestinationIdByName('Stockholm, Sweden')).to.equal(2);
-  });
 });
