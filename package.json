@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ohClaire/travel-tracker.git",
-    "homepage": "http://ohClaire.github.io/travel-tracker.git"
+    "homepage": "http://ohClaire.github.io/travel-tracker"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
