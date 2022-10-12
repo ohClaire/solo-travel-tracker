@@ -25,7 +25,7 @@ Other features I want to highlight:
 * Clean, attractive design     
 * Error handling: form validation, clear error and confirmation messaging      
 
-### Built With
+### Technologies
 
  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -36,7 +36,7 @@ Other features I want to highlight:
  ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)         
 
 ### Project Link
-Deployed Project: [travelfox](https://alyciacan.github.io/travel-fox/)
+Deployed Project: [traveltracker](https://github.com/ohClaire/travel-tracker)
 
 ### Screenshots:          
 <div align="center">
@@ -60,30 +60,22 @@ Deployed Project: [travelfox](https://alyciacan.github.io/travel-fox/)
   <li>You will also need to clone down this local api server: https://github.com/turingschool-examples/travel-tracker-api outside of the Travel Fox directory, follow the installation instructions, and have it running in a separate tab in your terminal each time you run the client.</li>
 </ol>
 
-## Context
-👋 I'm a student in the Front End program at [Turing School of Software and Design](https://frontend.turing.edu/). TravelFox is my solo final project for Mod 2, which means I have been a dev for just under 3 months!    
 
 ## Contact
 
-Alycia Canavan - alycia.canavan@gmail.com - [LinkedIn](https://www.linkedin.com/in/alycia-canavan/) - [GitHub](https://github.com/alyciacan)
+Hannah Celemen - hcelemen@icloud.com - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - [GitHub](https://github.com/ohClaire?tab=repositories)
 
 
 ## Wins and Challenges
-### Wins:    
-🏆 I learned a TON of CSS for this project        
-🏆 Relatively painless application of _get_ and _post_ fetch requests           
-🏆 Logical use of object classes           
-🏆 Taught myself to use dayjs for multiple applications         
-🏆 Using media queries and breakpoints for the first time ever          
+### Wins:           
 
 
 ### Challenges:       
-🤔 Troubleshooting an 11th hour bug 🐜 in my POST fetch request               
-🤔 Tricky photo formatting!     
+     
 
 ### Future Directions:         
 * Add dashboard and functionality for travel agent use        
 * Add more options for users to access data about their previous and upcoming trips        
 
 ## Acknowledgments         
-Shout out to my Project Manager, Cass, for her patience and support!
+
