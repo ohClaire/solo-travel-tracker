@@ -1,7 +1,9 @@
 const errorMessage = document.getElementById('postErrorMessage');
 
 export const fetchData = (fileName) => {
-  return fetch(`http://localhost:3001/api/v1/${fileName}`)
+  return fetch(
+    `https://travel-tracker-qotghu8qo-ohclaire.vercel.app//${fileName}`
+  )
     .then((response) => response.json())
     .catch((error) =>
       console.log(
@@ -12,11 +14,11 @@ export const fetchData = (fileName) => {
 };
 
 export const postTripRequest = (formData) => {
-  fetch('http://localhost:3001/api/v1/trips', {
+  fetch('https://travel-tracker-qotghu8qo-ohclaire.vercel.app/trips', {
     method: 'POST',
     body: JSON.stringify(formData),
     headers: {
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
@@ -25,12 +27,13 @@ export const postTripRequest = (formData) => {
         console.log(data.message);
         displayErrorMessage(data);
       }
-    }).catch(err => displayErrorMessage(err))
-}
+    })
+    .catch((err) => displayErrorMessage(err));
+};
 
 const displayErrorMessage = (data) => {
   if (!data.message.includes('successfully posted')) {
     errorMessage.innerText = `There was an issue processing your request. ${data.message}`;
   }
   errorMessage.classList.remove('hidden');
-}
+};
