@@ -2,7 +2,7 @@ const errorMessage = document.getElementById('postErrorMessage');
 
 export const fetchData = (fileName) => {
   return fetch(
-    `https://travel-tracker-qotghu8qo-ohclaire.vercel.app//${fileName}`
+    `https://travel-tracker-qotghu8qo-ohclaire.vercel.app/api/v1/${fileName}`
   )
     .then((response) => response.json())
     .catch((error) =>
@@ -14,7 +14,7 @@ export const fetchData = (fileName) => {
 };
 
 export const postTripRequest = (formData) => {
-  fetch('https://travel-tracker-qotghu8qo-ohclaire.vercel.app/trips', {
+  fetch('https://travel-tracker-qotghu8qo-ohclaire.vercel.app/api/v1/trips', {
     method: 'POST',
     body: JSON.stringify(formData),
     headers: {
