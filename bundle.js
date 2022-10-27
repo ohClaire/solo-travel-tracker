@@ -478,7 +478,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login-start {\n  margin: 0 auto;\n  padding: 20px;\n  width: 180px;\n  text-align: center;\n  color:#00917C;\n}\n\n.modal {\n  display: none;\n  font-family: 'Alegreya';\n}\n\n.modal.is-open {\n  display: block;\n}\n\n.modal__overlay {\n  align-items: center;\n  background: rgba(0,0,0,0.6);\n  display: flex;\n  justify-content: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.modal__container {\n  background-color: #fff;\n  border-radius: 12px;\n  box-sizing: border-box;\n  height: 50%;\n  overflow-y: auto;\n  padding: 30px;\n  width: 60%;\n}\n\n.modal__title {\n  color: #00917C;\n  font-size: 1.25rem;\n}\n\n.modal__close {\n  background: transparent;\n  border: 0;\n}\n\n.modal__header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.modal__content {\n  color: rgba(0,0,0,.8);\n  line-height: 1.5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n\n.modal__btn {\n  border-radius: 0.25rem;\n  border-style: none;\n  border-width: 0;\n  cursor: pointer;\n  font-size: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  overflow: visible;\n}\n\n.modal__btn:disabled {\n  background-color: rgb(95, 94, 94);\n}\n\n.modal__btn:focus, .modal__btn:hover {\n  transform: scale(1.05);\n}\n\n.modal__btn-primary {\n  background-color: #00917C;\n  color: #fff;\n}\n\n.cost-estimate__btn {\n  background-color: transparent;\n  border: 0px;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n.cost-estimate__btn:hover {\n  color: #ec8442;\n  cursor: pointer;\n  text-decoration: underline;     \n  text-decoration-color: #ec8442;  \n}", "",{"version":3,"sources":["webpack://./src/css/modal.css"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,aAAa;EACb,YAAY;EACZ,kBAAkB;EAClB,aAAa;AACf;;AAEA;EACE,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,aAAa;EACb,uBAAuB;EACvB,eAAe;EACf,MAAM;EACN,OAAO;EACP,QAAQ;EACR,SAAS;AACX;;AAEA;EACE,sBAAsB;EACtB,mBAAmB;EACnB,sBAAsB;EACtB,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,UAAU;AACZ;;AAEA;EACE,cAAc;EACd,kBAAkB;AACpB;;AAEA;EACE,uBAAuB;EACvB,SAAS;AACX;;AAEA;EACE,aAAa;EACb,8BAA8B;AAChC;;AAEA;EACE,qBAAqB;EACrB,gBAAgB;EAChB,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;EACf,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB;EACnB,sBAAsB;EACtB,iBAAiB;AACnB;;AAEA;EACE,iCAAiC;AACnC;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,6BAA6B;EAC7B,WAAW;EACX,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,8BAA8B;AAChC","sourcesContent":[".login-start {\n  margin: 0 auto;\n  padding: 20px;\n  width: 180px;\n  text-align: center;\n  color:#00917C;\n}\n\n.modal {\n  display: none;\n  font-family: 'Alegreya';\n}\n\n.modal.is-open {\n  display: block;\n}\n\n.modal__overlay {\n  align-items: center;\n  background: rgba(0,0,0,0.6);\n  display: flex;\n  justify-content: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.modal__container {\n  background-color: #fff;\n  border-radius: 12px;\n  box-sizing: border-box;\n  height: 50%;\n  overflow-y: auto;\n  padding: 30px;\n  width: 60%;\n}\n\n.modal__title {\n  color: #00917C;\n  font-size: 1.25rem;\n}\n\n.modal__close {\n  background: transparent;\n  border: 0;\n}\n\n.modal__header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.modal__content {\n  color: rgba(0,0,0,.8);\n  line-height: 1.5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n\n.modal__btn {\n  border-radius: 0.25rem;\n  border-style: none;\n  border-width: 0;\n  cursor: pointer;\n  font-size: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  overflow: visible;\n}\n\n.modal__btn:disabled {\n  background-color: rgb(95, 94, 94);\n}\n\n.modal__btn:focus, .modal__btn:hover {\n  transform: scale(1.05);\n}\n\n.modal__btn-primary {\n  background-color: #00917C;\n  color: #fff;\n}\n\n.cost-estimate__btn {\n  background-color: transparent;\n  border: 0px;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n.cost-estimate__btn:hover {\n  color: #ec8442;\n  cursor: pointer;\n  text-decoration: underline;     \n  text-decoration-color: #ec8442;  \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login-start {\n  margin: 0 auto;\n  padding: 20px;\n  width: 180px;\n  text-align: center;\n  color:#00917C;\n}\n\n.modal {\n  display: none;\n  font-family: 'Alegreya';\n}\n\n.modal.is-open {\n  display: block;\n}\n\n.modal__overlay {\n  align-items: center;\n  background: rgba(0,0,0,0.6);\n  display: flex;\n  justify-content: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.modal__container {\n  background-color: #fff;\n  border-radius: 12px;\n  box-sizing: border-box;\n  height: 50%;\n  overflow-y: auto;\n  padding: 30px;\n  width: 60%;\n}\n\n.modal__title {\n  color: #00917C;\n  font-size: 1.25rem;\n}\n\n.modal__close {\n  background: transparent;\n  border: 0;\n}\n\n.modal__header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.modal__content {\n  color: rgba(0,0,0,.8);\n  line-height: 1.5;\n  /* margin-top: 2rem; */\n  margin-bottom: 2rem;\n}\n\n.modal__btn {\n  border-radius: 0.25rem;\n  border-style: none;\n  border-width: 0;\n  cursor: pointer;\n  font-size: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  overflow: visible;\n}\n\n.modal__btn:disabled {\n  background-color: rgb(95, 94, 94);\n}\n\n.modal__btn:focus, .modal__btn:hover {\n  transform: scale(1.05);\n}\n\n.modal__btn-primary {\n  background-color: #00917C;\n  color: #fff;\n}\n\n.cost-estimate__btn {\n  background-color: transparent;\n  border: 0px;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n.cost-estimate__btn:hover {\n  color: #ec8442;\n  cursor: pointer;\n  text-decoration: underline;     \n  text-decoration-color: #ec8442;  \n}", "",{"version":3,"sources":["webpack://./src/css/modal.css"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,aAAa;EACb,YAAY;EACZ,kBAAkB;EAClB,aAAa;AACf;;AAEA;EACE,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,aAAa;EACb,uBAAuB;EACvB,eAAe;EACf,MAAM;EACN,OAAO;EACP,QAAQ;EACR,SAAS;AACX;;AAEA;EACE,sBAAsB;EACtB,mBAAmB;EACnB,sBAAsB;EACtB,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,UAAU;AACZ;;AAEA;EACE,cAAc;EACd,kBAAkB;AACpB;;AAEA;EACE,uBAAuB;EACvB,SAAS;AACX;;AAEA;EACE,aAAa;EACb,8BAA8B;AAChC;;AAEA;EACE,qBAAqB;EACrB,gBAAgB;EAChB,sBAAsB;EACtB,mBAAmB;AACrB;;AAEA;EACE,sBAAsB;EACtB,kBAAkB;EAClB,eAAe;EACf,eAAe;EACf,eAAe;EACf,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB;EACnB,sBAAsB;EACtB,iBAAiB;AACnB;;AAEA;EACE,iCAAiC;AACnC;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE,6BAA6B;EAC7B,WAAW;EACX,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,0BAA0B;EAC1B,8BAA8B;AAChC","sourcesContent":[".login-start {\n  margin: 0 auto;\n  padding: 20px;\n  width: 180px;\n  text-align: center;\n  color:#00917C;\n}\n\n.modal {\n  display: none;\n  font-family: 'Alegreya';\n}\n\n.modal.is-open {\n  display: block;\n}\n\n.modal__overlay {\n  align-items: center;\n  background: rgba(0,0,0,0.6);\n  display: flex;\n  justify-content: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.modal__container {\n  background-color: #fff;\n  border-radius: 12px;\n  box-sizing: border-box;\n  height: 50%;\n  overflow-y: auto;\n  padding: 30px;\n  width: 60%;\n}\n\n.modal__title {\n  color: #00917C;\n  font-size: 1.25rem;\n}\n\n.modal__close {\n  background: transparent;\n  border: 0;\n}\n\n.modal__header {\n  display: flex;\n  justify-content: space-between;\n}\n\n.modal__content {\n  color: rgba(0,0,0,.8);\n  line-height: 1.5;\n  /* margin-top: 2rem; */\n  margin-bottom: 2rem;\n}\n\n.modal__btn {\n  border-radius: 0.25rem;\n  border-style: none;\n  border-width: 0;\n  cursor: pointer;\n  font-size: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  overflow: visible;\n}\n\n.modal__btn:disabled {\n  background-color: rgb(95, 94, 94);\n}\n\n.modal__btn:focus, .modal__btn:hover {\n  transform: scale(1.05);\n}\n\n.modal__btn-primary {\n  background-color: #00917C;\n  color: #fff;\n}\n\n.cost-estimate__btn {\n  background-color: transparent;\n  border: 0px;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n.cost-estimate__btn:hover {\n  color: #ec8442;\n  cursor: pointer;\n  text-decoration: underline;     \n  text-decoration-color: #ec8442;  \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -518,7 +518,9 @@ __webpack_require__.r(__webpack_exports__);
 const errorMessage = document.getElementById('postErrorMessage');
 
 const fetchData = (fileName) => {
-  return fetch(`http://localhost:3001/api/v1/${fileName}`)
+  return fetch(
+    `https://travel-tracker-qotghu8qo-ohclaire.vercel.app/api/v1/${fileName}`
+  )
     .then((response) => response.json())
     .catch((error) =>
       console.log(
@@ -529,11 +531,11 @@ const fetchData = (fileName) => {
 };
 
 const postTripRequest = (formData) => {
-  fetch('http://localhost:3001/api/v1/trips', {
+  fetch('https://travel-tracker-qotghu8qo-ohclaire.vercel.app/api/v1/trips', {
     method: 'POST',
     body: JSON.stringify(formData),
     headers: {
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
@@ -542,15 +544,17 @@ const postTripRequest = (formData) => {
         console.log(data.message);
         displayErrorMessage(data);
       }
-    }).catch(err => displayErrorMessage(err))
-}
+    })
+    .catch((err) => displayErrorMessage(err));
+};
 
 const displayErrorMessage = (data) => {
   if (!data.message.includes('successfully posted')) {
     errorMessage.innerText = `There was an issue processing your request. ${data.message}`;
   }
   errorMessage.classList.remove('hidden');
-}
+};
+
 
 /***/ }),
 /* 11 */
