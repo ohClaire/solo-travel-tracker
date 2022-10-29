@@ -11,7 +11,7 @@
     The all-in-one vacation station for the choosy world-traveler.
   </h4>
 
-Travel Tracker is a useful application for the user to view their previous and upcoming trips booked with a fictictitious travel agency. The user can submit trip request to this agency hence the pending trips. This application will keep track of their travel expenditures and provide estimates for the trip they are requesting. 
+Travel Tracker is a useful application for the user to view their previous and upcoming trips booked with a fictitious travel agency. The user can submit trip request to this agency hence the pending trips. This application will keep track of their travel expenditures and provide estimates for the trip they are requesting. 
 
 ## About The Project
 The Travel Tracker was assigned in week 10 of the Turing School of Software and Design front-end engineering program. The goals of this group project were to:   
